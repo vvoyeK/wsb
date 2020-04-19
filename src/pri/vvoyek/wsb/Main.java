@@ -30,5 +30,15 @@ public class Main {
 
         me.car = x3;
         System.out.println(me);
+
+        me.getSalary();
+
+        try {
+            me.setSalary(-1.0);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        me.setSalary(100.0);
+        me.setSalary(90.0);
     }
 }
