@@ -1,6 +1,8 @@
 package pri.vvoyek.wsb;
 
 
+import java.time.Year;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -22,5 +24,11 @@ public class Main {
         System.out.println(dog);
         dog.feed();
         dog.takeForAWalk();
+
+        Car x3 = new Car("X3", "BMW", Year.of(2020));
+        System.out.println(x3);
+
+        me.car = x3;
+        System.out.println(me);
     }
 }
