@@ -25,10 +25,10 @@ public class Main {
         dog.feed();
         dog.takeForAWalk();
 
-        Car x3 = new Car("X3", "BMW", Year.of(2020));
+        Car x3 = new Car("X3", "BMW", Year.of(2020), 500);
         System.out.println(x3);
 
-        me.car = x3;
+        me.setCar(x3);
         System.out.println(me);
 
         me.getSalary();
@@ -40,5 +40,11 @@ public class Main {
         }
         me.setSalary(100.0);
         me.setSalary(90.0);
+
+        x3.value = 200;
+        me.setCar(x3);
+
+        x3.value = 50;
+        me.setCar(x3);
     }
 }
