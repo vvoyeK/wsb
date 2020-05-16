@@ -1,6 +1,6 @@
 package pri.vvoyek.wsb;
 
-
+import pri.vvoyek.wsb.devices.Device;
 import pri.vvoyek.wsb.devices.Car;
 import pri.vvoyek.wsb.devices.Phone;
 
@@ -50,7 +50,7 @@ public class Main {
         x3.value = 50;
         me.setCar(x3);
 
-        Car bmw = new Car("X3", "BMW", Year.of(2020), x3.value);
+        Device bmw = new Car("X3", "BMW", Year.of(2020), x3.value);
         System.out.println(x3);
         System.out.println(bmw);
 
@@ -58,6 +58,9 @@ public class Main {
         System.out.println(bmw.hashCode());
         System.out.println(bmw == x3);
         System.out.println(bmw.equals(x3));
+        
+        bmw.turnOn();
+        phone.turnOn();
 
     }
 }
