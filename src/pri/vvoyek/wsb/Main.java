@@ -1,10 +1,10 @@
 package pri.vvoyek.wsb;
 
 import pri.vvoyek.wsb.creatures.*;
-import pri.vvoyek.wsb.devices.Device;
-import pri.vvoyek.wsb.devices.Car;
-import pri.vvoyek.wsb.devices.Phone;
+import pri.vvoyek.wsb.devices.*;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Year;
 
 public class Main {
@@ -30,7 +30,8 @@ public class Main {
         dog.feed();
         dog.takeForAWalk();
 
-        Car x3 = new Car("X3", "BMW", Year.of(2020), 500);
+        Car x3 = new Diesel("X3", "BMW", Year.of(2020), 500);
+        x3.refuel();
         System.out.println(x3);
 
         me.setCar(x3);
@@ -52,7 +53,7 @@ public class Main {
         x3.value = 50;
         me.setCar(x3);
 
-        Device bmw = new Car("X3", "BMW", Year.of(2020), x3.value);
+        Device bmw = new Electric("X3", "BMW", Year.of(2020), x3.value);
         System.out.println(x3);
         System.out.println(bmw);
 
@@ -98,5 +99,11 @@ public class Main {
         cow.feed(15.0);
         System.out.println(cow);
         cow.beEaten();
+
+        try {
+            phone.installAnApp(new URL(Phone.APP_SERVER_PROTO, Phone.APP_SERVER_ADDRESS,"demo_2.0.0.apk"));
+        } catch (MalformedURLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

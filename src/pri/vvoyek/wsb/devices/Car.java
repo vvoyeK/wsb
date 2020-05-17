@@ -2,7 +2,7 @@ package pri.vvoyek.wsb.devices;
 
 import java.time.Year;
 
-public class Car extends Device {
+public abstract class Car extends Device {
     public double value;
 
     public Car(String model, String company, Year yearOfProduction, double value) {
@@ -33,7 +33,7 @@ public class Car extends Device {
 
      public void turnOn() {
          System.out.println(this + " was turned on");
-
     }
 
+    public abstract void refuel();
 }
