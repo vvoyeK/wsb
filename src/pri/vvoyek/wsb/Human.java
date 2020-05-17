@@ -4,12 +4,15 @@ import pri.vvoyek.wsb.devices.Car;
 import java.time.LocalDateTime;
 
 public class Human extends Animal {
+    private String name;
     Animal pet;
     private Car car;
     private double salary;
+    public double cash;
 
-    public Human() {
+    public Human(String name) {
         super(Animal.HUMAN);
+        this.name = name;
     }
 
     public double getSalary() {
@@ -48,7 +51,11 @@ public class Human extends Animal {
         }
     }
 
+    public final void sell(Human seller, Human buyer, Double price) {
+       throw new RuntimeException("Handel ludźmi jest zabroniony!");
+    }
+
     public String toString() {
-        return super.toString() + " " + this.car;
+        return name;
     }
 }

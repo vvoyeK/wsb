@@ -10,7 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Human me = new Human();
+        Human me = new Human("Wojtek");
+        Human buzz = new Human("Buzz");
         Animal dog = new Animal(Animal.DOG);
         Phone phone = new Phone("112");
 
@@ -61,6 +62,33 @@ public class Main {
         
         bmw.turnOn();
         phone.turnOn();
+
+        me.cash = 0.0;
+        buzz.cash = 150.0;
+
+        try {
+            bmw.sell(me, buzz, 200.0);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        bmw.sell(me, buzz, 100.0);
+
+        try {
+            bmw.sell(me, buzz, 10.0);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        me.pet =  dog;
+        dog.sell(me, me, 10.0);
+
+        Human slave = new Human("Django");
+
+        try {
+            slave.sell(buzz, me, 1.0);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
 
     }
 }

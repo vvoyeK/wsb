@@ -17,7 +17,8 @@ public class Phone extends Device {
     }
 
     public String toString() {
-        return this.number;
+
+        return "Phone number " + this.number;
     }
 
     public void turnOn() {

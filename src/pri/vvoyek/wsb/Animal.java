@@ -1,8 +1,9 @@
 package pri.vvoyek.wsb;
 
-public class Animal {
+public class Animal implements Sellable {
     final String species;
     private Double weight;
+    private Human owner;
 
     static final public String HUMAN = "human";
     static final public String DOG = "dog";
@@ -78,4 +79,20 @@ public class Animal {
     public String toString() {
         return this.species + " " + this.weight + "kg";
     }
+
+    public void sell(Human seller, Human buyer, Double price) {
+
+        if (owner != null && !owner.equals(seller))
+            throw new RuntimeException(seller + " nie posiada " + this);
+
+        if (buyer.cash < price)
+            throw new RuntimeException(buyer + " nie posiada " + price + " w gotówce!");
+
+        buyer.cash -= price;
+        seller.cash += price;
+
+        owner = buyer;
+        System.out.println(buyer + " kupił " + this + " za " + price);
+    }
+
 }
