@@ -1,4 +1,5 @@
 package pri.vvoyek.wsb;
+import pri.vvoyek.wsb.creatures.Animal;
 import pri.vvoyek.wsb.devices.Car;
 
 import java.time.LocalDateTime;

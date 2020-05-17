@@ -1,6 +1,9 @@
-package pri.vvoyek.wsb;
+package pri.vvoyek.wsb.creatures;
 
-public class Animal implements Sellable {
+import pri.vvoyek.wsb.Human;
+import pri.vvoyek.wsb.Sellable;
+
+public abstract class Animal implements Sellable, Feedable {
     final String species;
     private Double weight;
     private Human owner;
@@ -35,11 +38,16 @@ public class Animal implements Sellable {
         this.weight = getDefaultWeight(species);
     }
 
-    boolean isAlive() {
+    public Animal(String species, double weight) {
+        this.species = species;
+        this.weight = weight;
+    }
+
+    public boolean isAlive() {
         return weight > 0.0;
     }
 
-    void feed(double food) {
+    public void feed(double food) {
         if (food < 0.0)
             throw new IllegalArgumentException();
 
@@ -51,7 +59,7 @@ public class Animal implements Sellable {
         weight += food;
     }
 
-    void takeForAWalk(double weightLost) {
+    public void takeForAWalk(double weightLost) {
         if (weightLost < 0.0)
             throw new IllegalArgumentException();
 
@@ -68,11 +76,11 @@ public class Animal implements Sellable {
         }
     }
 
-    void feed() {
-        feed(getDefaultWeight(species) / 100.0);
+    public void feed() {
+        feed(weight / 100.0);
     }
 
-    void takeForAWalk() {
+    public void takeForAWalk() {
         takeForAWalk(getDefaultWeight(species) / 200.0);
     }
 

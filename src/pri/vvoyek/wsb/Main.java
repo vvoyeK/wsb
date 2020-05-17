@@ -1,5 +1,6 @@
 package pri.vvoyek.wsb;
 
+import pri.vvoyek.wsb.creatures.*;
 import pri.vvoyek.wsb.devices.Device;
 import pri.vvoyek.wsb.devices.Car;
 import pri.vvoyek.wsb.devices.Phone;
@@ -12,7 +13,7 @@ public class Main {
 
         Human me = new Human("Wojtek");
         Human buzz = new Human("Buzz");
-        Animal dog = new Animal(Animal.DOG);
+        Pet dog = new Pet(Pet.DOG);
         Phone phone = new Phone("112");
 
         System.out.println(me);
@@ -90,5 +91,12 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
+        FarmAnimal cow = new FarmAnimal("cow", 500.0);
+        System.out.println(cow);
+        cow.feed();
+        System.out.println(cow);
+        cow.feed(15.0);
+        System.out.println(cow);
+        cow.beEaten();
     }
 }
