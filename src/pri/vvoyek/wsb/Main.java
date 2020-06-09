@@ -13,6 +13,7 @@ public class Main {
 
         Human me = new Human("Wojtek", 3);
         Human buzz = new Human("Buzz");
+        Human drwho = new Human("DrWho");
         Pet dog = new Pet(Pet.DOG);
         Phone phone = new Phone("112");
 
@@ -31,6 +32,7 @@ public class Main {
         dog.takeForAWalk();
 
         Car x3 = new Diesel("X3", "BMW", Year.of(2020), 500);
+        x3.setFirstOwner(me);
         x3.refuel();
         System.out.println(x3);
 
@@ -54,6 +56,7 @@ public class Main {
         me.setCar(x3,0);
 
         Car bmw = new Electric("X3", "BMW", Year.of(2020), x3.value);
+        bmw.setFirstOwner(me);
         me.setCar(bmw, 1);
         System.out.println(x3);
         System.out.println(bmw);
@@ -64,6 +67,7 @@ public class Main {
         System.out.println(bmw.equals(x3));
 
         Car mb = new Diesel("GLE", "Mercedes-Benz", Year.of(2000), 300.0);
+        mb.setFirstOwner(me);
         me.setCar(mb, 2);
         me.showGarage();
         me.sortCars();
@@ -82,6 +86,8 @@ public class Main {
             System.out.println(ex.getMessage());
         }
         bmw.sell(me, buzz, 100.0);
+        bmw.sell(buzz, drwho, 0.0);
+        bmw.sell(drwho, buzz, 0.0);
 
         try {
             bmw.sell(me, buzz, 10.0);
@@ -92,6 +98,13 @@ public class Main {
         buzz.showGarage();
         me.sortCars();
         me.showGarage();
+        bmw.showOwners();
+        System.out.println("czy " + buzz + " posiadał " + bmw + " ? " + bmw.wasOwnedBy(buzz));
+        System.out.println("czy " + buzz + " posiadał " + mb + " ? " + mb.wasOwnedBy(buzz));
+        System.out.println("czy " + me + " posiadał " + bmw + " ? " + bmw.wasOwnedBy(me));
+        System.out.println("czy " + me + " sprzedał " + buzz + " " + bmw + " ? " + bmw.wasSoldByTo(me, buzz));
+        System.out.println("czy " + buzz + " sprzedał " + me + " " + bmw + " ? " + bmw.wasSoldByTo(buzz, me));
+        System.out.println(bmw.transactionCount());
 
         me.pet =  dog;
         dog.sell(me, me, 10.0);
@@ -117,7 +130,6 @@ public class Main {
         } catch (MalformedURLException ex) {
             System.out.println(ex.getMessage());
         }
-
 
     }
 }
