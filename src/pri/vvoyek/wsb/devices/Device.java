@@ -10,13 +10,17 @@ public abstract class Device implements Sellable {
     final String company;
     final String model;
     final Year yearOfProduction;
-    private Human owner;
+    protected Human owner;
     public double value;
 
     public Device(String model, String company, Year yearOfProduction) {
         this.model = model;
         this.company = company;
         this.yearOfProduction = yearOfProduction;
+    }
+
+    public void setFirstOwner(Human owner) {
+        this.owner = owner;
     }
 
     public String toString() {

@@ -131,5 +131,21 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
+        phone.setFirstOwner(me);
+        phone.installAnApp(new Phone.Application("Outlook", "1.0", 0.0));
+        phone.installAnApp(new Phone.Application("Commander", "2.0", 1.5));
+        phone.installAnApp(new Phone.Application("Gmail", "1.0", 0.0));
+
+        try {
+            phone.installAnApp(new Phone.Application("PhotoShop", "9.0", 1230.0));
+        } catch (RuntimeException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        System.out.println(phone.isAppInstalled("Outlook"));
+        phone.showFreeApps();
+        System.out.println(phone.getApplicationsValue());
+        phone.showAllAppsByName();
+        phone.showAllAppsByPrice();
     }
 }
