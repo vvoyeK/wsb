@@ -4,12 +4,14 @@ import pri.vvoyek.wsb.Human;
 import pri.vvoyek.wsb.Sellable;
 
 import java.time.Year;
+import java.util.Comparator;
 
 public abstract class Device implements Sellable {
     final String company;
     final String model;
     final Year yearOfProduction;
     private Human owner;
+    public double value;
 
     public Device(String model, String company, Year yearOfProduction) {
         this.model = model;
@@ -38,4 +40,19 @@ public abstract class Device implements Sellable {
         System.out.println(buyer + " kupił " + this + " za " + price);
     }
 
+    public static class ByYearComparator implements Comparator<Device> {
+        public int compare(Device a, Device b) {
+            if (a == null) {
+                if (b == null)
+                    return 0;
+                return 1;
+            }
+            if (b == null)
+                return -1;
+
+            return a.yearOfProduction.getValue() < b.yearOfProduction.getValue() ? -1 :
+                    a.yearOfProduction.equals(b.yearOfProduction) ? 0 : 1;
+        }
+    }
 }
+

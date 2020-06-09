@@ -1,9 +1,10 @@
 package pri.vvoyek.wsb.devices;
 
+import pri.vvoyek.wsb.Human;
+
 import java.time.Year;
 
 public abstract class Car extends Device {
-    public double value;
 
     public Car(String model, String company, Year yearOfProduction, double value) {
         super(model, company, yearOfProduction);
@@ -34,6 +35,20 @@ public abstract class Car extends Device {
      public void turnOn() {
          System.out.println(this + " was turned on");
     }
+
+    public void sell(Human seller, Human buyer, Double price) {
+
+        if (!seller.hasCarInGarage(this))
+            throw new RuntimeException(seller + " nie posiada w garażu " + this);
+        if (!buyer.hasFreeGarageSlot())
+            throw new RuntimeException(buyer + " nie posiada miejsca w garażu");
+
+        super.sell(seller, buyer, price);
+
+        seller.removeCar(this);
+        buyer.addCar(this);
+    }
+
 
     public abstract void refuel();
 }
